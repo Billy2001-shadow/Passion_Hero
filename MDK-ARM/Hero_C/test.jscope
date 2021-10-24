@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes" ?>
+<JScopeProject>
+    <FileVersion major="1" minor="1" />
+    <Project>
+        <Configuration>
+            <JLink>
+                <Options IsRTTSession="0" IsRTTWithTimeStamp="1" SamplingPeriod="20000" Connection="1" SerialNo="0" IP="" TargetDevice="STM32F407IG" TargetInterface="SWD" InterfaceSpeed="50" />
+            </JLink>
+            <ElfFile Name="F:\OneDrive - email.ncu.edu.cn\rm\Hero_C\1.0\MDK-ARM\Hero_C\Hero_C.axf" />
+            <DataFile Name="" />
+            <RawFile Name="" />
+            <Scope>
+                <Options TimeResolutionUs="1000000" />
+            </Scope>
+        </Configuration>
+        <Windows>
+            <Graph Show="1" />
+            <Watch Show="1" />
+        </Windows>
+        <SelectedSymbols>
+            <Symbol>
+                <Options Name="first_temperate" Address="0x20000106" Type="uchar" TypeID="6" Size="1" GraphColorRed="255" GraphColorGreen="215" GraphColorBlue="0" YMinSampled="1" YMaxSampled="1" YAvgSampled="1" Offset="4" ShowInGraph="1" YOffset="200" IsAutoConfig="1" YResolution="1" MaxValue="2" File="..\APP_Tasks\INS_task.c" Scope="1" DrawStyle="0" />
+            </Symbol>
+        </SelectedSymbols>
+    </Project>
+</JScopeProject>

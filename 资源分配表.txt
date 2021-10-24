@@ -1,0 +1,63 @@
+STM32F407IGHx  C板
+
+*时钟*
+ 输入				PLLCK系数			     	输出					
+ HSE 12MHz			M=8，N=168，P=2				SYSCLK					168MHz
+												APB1-peripheral clock	42MHz
+												APB1-timer clock		84MHz
+												APB2-peripheral clock	84MHz
+												APB2-timer clock		168MHz
+
+*GPIO*
+	  引脚		  功能/备注
+【OK】PH10~PH12  LED1~LED3
+【OK】PI7		 红外中断io
+【OK】PG6		 IST8301 RESET
+【OK】PG3		 IST8301 数据准备
+【OK】PA0		 按键中断
+【OK】PA4        加速度计片选io
+【OK】PB0        陀螺仪计片选io
+【OK】PC4        加速度计中断io
+【OK】PC5        陀螺仪中断io
+【OK】PC8        红外激光输出口
+【OK】PD14       掉线蜂鸣器警告
+【OK】PF0        I2C 传输串行数据
+【OK】PF1        I2C 同步时钟脉冲
+  
+*USART*
+		名称		  	引脚		  	功能/备注			        	            DMA_request                 DMA-stream                 波特率         
+【OK】USART1			PA9/PB7		  	USART1_TX/USART1_RX(示波器)                 USART1_RX                   DMA2-Stream5               115200
+【NO】USART3			PC11	      	USART3_RX（接收遥控器数据接收）             USART3_RX                   DMA1-Stream1               100000
+【OK】USART6			PG14/PG9        USART6_TX/USART6_RX（视觉数据收发）         USART6_RX                   DMA2-Stream1               115200
+
+*SPI*
+      名称		  	引脚		  				功能/备注
+【OK】SPI1
+				    PB3------> SPI1_CLK			SPI 的时钟线，主设备通过 SCK 向各个从设备提供时钟信号
+				    PA7------> SPI1_MOSI		SPI 的数据线之一，传输方向为从设备发出数据，主设备接收
+				    PB4------> SPI1_MISO 		SPI 的数据线之一，传输方向为主设备发出数据，从设备接收
+
+*I2C*
+      名称		  	引脚		  				功能/备注
+【OK】I2C3
+                    RSTN_IST8310                IST8310复位io
+					DRDY_IST8310                IST8310数据准备
+					I2C3_SCL                     I2C3时钟线
+					I2C3_SDA                     I2C3数据线
+*TIM*   16位高级定时器，时钟来源APB2：TIM1，TIM8。16位通用定时器，时钟来自APB1：TIM3，TIM4。32位通用定时器，时钟来自APB1：TIM2，TIM5。
+		名称		  	引脚		  				功能/备注  			  	 		   			  	 		   			  	 	 模式		  	   分频系数		  	   自动重装载值		  	   计数模式		  	   周期/频率 
+【OK】	TIM2			————						HAL库时钟
+【OK】	TIM4		    ————						断线检测专用定时器															  更新中断			 839			       99                   向上				  1ms
+【OK】	TIM10		    PF6         			    驱动IMU温控，对应CH1通道												      PWM输出			 839+1				 1999+1					向上	            20ms/50Hz
+ 
+ 
+*CAN*
+	  名称		  	引脚		  				功能/备注
+【OK】CAN1			
+					PD0 ------> CAN1_RX			Prescaler = 6；SyncJumpWidth = CAN_SJW_1TQ；TimeSeg1 = CAN_BS1_2TQ；TimeSeg2 = CAN_BS2_4TQ。
+					PD1 ------> CAN1_TX			波特率 = PCLK1/[(2+4+1)*6] = 42/42 = 1MHz
+ 
+【OK】CAN2
+				   PB12 ------> CAN2_RX        Prescaler = 6；SyncJumpWidth = CAN_SJW_1TQ；TimeSeg1 = CAN_BS1_2TQ；TimeSeg2 = CAN_BS2_4TQ。
+                   PB13 ------> CAN2_TX        波特率 = PCLK1/[(2+4+1)*6] = 42/42 = 1MHz
+			   
