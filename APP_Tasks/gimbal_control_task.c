@@ -69,6 +69,8 @@ void Gimbal_Control_Task(void const * argument)
 	
 		if(C_Board.gimbal == ENCODER)
 		{
+			//这里仅作为第二次测试使用
+			//该版本为PID调试版本 
 			pitch_init_angle = 700;
 			angle_get =  motor_get[PITCH_6623MOTOR].angle;
 			angle_set = pitch_init_angle;          //给一个阶跃信号  角度500
